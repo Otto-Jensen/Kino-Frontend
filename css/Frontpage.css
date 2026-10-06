@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 50px;
+}
+
+main {
+    margin: 20px 50px;
+}
+
+.movie {
+    display: flex;
+    align-items: center;
+
+    padding: 30px;
+    border-bottom: 1px solid black;
+}
+
+.movie-poster {
+    width: 150px;
+    height: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid black;
+}
+
+.movie-info {
+    margin-left: 35px;
+}
+
+.movie-info p {
+    margin: 8px 0;
+}
+
+.movie-action {
+    margin-left: auto;
+}
+
+.movie-action button {
+    padding: 15px 40px;
+}
