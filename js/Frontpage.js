@@ -45,6 +45,10 @@ function displayMovie(movie){
     const button = document.createElement("button");
     button.textContent = "View Movie";
 
+    button.addEventListener("click", function (){
+        window.location.href="movie.html?id=" + movie.movieId;
+    });
+
     actionDiv.appendChild(button);
 
     movieDiv.appendChild(posterDiv);
