@@ -38,4 +38,65 @@ function displayMovie(movie){
     movieDetails.appendChild(description);
 }
 
+
+function fetchShowings() {
+
+    const urlShowings =
+        "http://localhost:8080/api/showings/movie/" + movieId;
+
+    fetch(urlShowings)
+        .then(response => response.json())
+        .then(showings => {
+            console.log(showings);
+
+            displayShowing(showings);
+        })
+        .catch(error => console.log(error));
+}
+
+
+function displayShowing(showings) {
+
+    const showingsDiv = document.getElementById("showings");
+
+    const groupedShowings={};
+
+    showings.forEach(showing=>{
+        const dateTime = new Date(showing.dateTime);
+
+        const date =dateTime.toLocaleDateString("da-DK");
+
+        if(!groupedShowings[date]){
+            groupedShowings[date]=[];
+        }
+        groupedShowings[date].push(showing);
+    });
+
+    for (const date in groupedShowings) {
+
+        const dateHeading = document.createElement("h3");
+        dateHeading.textContent = date;
+
+        showingsDiv.appendChild(dateHeading);
+
+
+        groupedShowings[date].forEach(showing => {
+
+            const dateTime = new Date(showing.dateTime);
+
+            const time = dateTime.toLocaleTimeString("da-DK", {
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+
+            const showingButton = document.createElement("button");
+            showingButton.textContent = time;
+
+            showingsDiv.appendChild(showingButton);
+        });
+    }
+}
+
+
 fetchMovie();
+fetchShowings();
