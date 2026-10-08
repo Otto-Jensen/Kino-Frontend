@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Movie</title>
+    <link rel="stylesheet" href="../css/Frontpage.css">
+</head>
+<body>
+
+<header>
+    <h1>Kino - Employee</h1>
+
+    <nav>
+        <a href="employee.html">Back to Movies</a>
+    </nav>
+</header>
+
+<main>
+
+    <div id="movie-details">
+
+    </div>
+
+    <h2>Existing Showings</h2>
+
+    <div id="showings">
+
+    </div>
+
+    <h2>Add Showing</h2>
+
+    <form id="create-showing-form">
+
+        <label for="cinema">Cinema Hall:</label>
+        <select id="cinema" required>
+            <option value="">Select cinema</option>
+        </select>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" required>
+
+        <button type="submit">Add Showing</button>
+
+    </form>
+
+</main>
+
+<script src="../js/employee-movie.js"></script>
+
+</body>
+</html>
