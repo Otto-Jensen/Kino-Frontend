@@ -92,11 +92,27 @@ function displayShowing(showings) {
             const showingButton = document.createElement("button");
             showingButton.textContent = time;
 
+            showingButton.addEventListener("click", function () {
+                window.location.href = "seats.html?showingId=" + showing.showingId;
+            });
+
             showingsDiv.appendChild(showingButton);
         });
     }
 }
 
+function fetchAvailableSeats(showingId) {
+
+    const urlSeats =
+        "http://localhost:8080/api/showings/" + showingId + "/available-seats";
+
+    fetch(urlSeats)
+        .then(response => response.json())
+        .then(seats => {
+            console.log("Ledige sæder:", seats);
+        })
+        .catch(error => console.log(error));
+}
 
 fetchMovie();
 fetchShowings();
