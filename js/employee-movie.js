@@ -120,5 +120,62 @@ function deleteShowing(showingId){
         .catch (error => console.log(error))
 }
 
+function fetchCinemas(){
+    fetch("http://localhost:8080/api/cinemas")
+        .then( response =>response.json())
+        .then(cinemas => {
+            console.log("cinema received:", cinemas)
+            const cinemaSelect = document.getElementById("cinema");
+            console.log("dropdown found:", cinemaSelect);
+            cinemas.forEach(cinema=> {
+                const option = document.createElement("option");
+
+                option.value = cinema.cinemaId;
+                option.textContent = "Cinema" + cinema.cinemaId;
+
+                cinemaSelect.appendChild(option);
+            });
+        })
+        .catch(error=>console.log(error));
+}
+
+
+function createShowing(event){
+    event.preventDefault();
+
+    const cinemaId = Number(document.getElementById("cinema").value)
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+
+    const showing = {
+        movie: {movieId: Number(movieId)},
+        cinema: {cinemaId:cinemaId},
+        dateTime:date + "T" + time + ":00"
+    };
+    fetch("http://localhost:8080/api/showings", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(showing)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Could not create showing");
+            }
+
+            return response.json();
+        })
+        .then(() => {
+            fetchShowings();
+            document.getElementById("create-showing-form").reset();
+        })
+        .catch(error => console.log(error));
+}
+
+document.getElementById("create-showing-form")
+    .addEventListener("submit", createShowing);
+
+fetchCinemas()
 fetchMovie();
 fetchShowings();
