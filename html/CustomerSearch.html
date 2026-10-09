@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kundesøgning - Kino</title>
+    <!-- Tilslut dit prototypes CSS-stylesheet her -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- Navigation / Header fra din prototype -->
+<header class="navbar">
+    <div class="logo">KINO</div>
+    <nav>
+        <a href="index.html">Forside</a>
+        <a href="customerSearch.html" class="active">Kundesøgning</a>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="search-section">
+        <h1>Kundesøgning</h1>
+        <p>Søg efter oprettede kunder i systemet</p>
+
+        <div class="search-bar">
+            <input type="text" id="customerSearchInput" placeholder="Indtast kundenavn..." class="input-field">
+            <button id="searchBtn" class="btn btn-primary">Søg</button>
+        </div>
+    </section>
+
+    <section class="results-section">
+        <h2>Søgeresultater</h2>
+        <!-- JavaScript indsætter kundekort heri -->
+        <div id="searchResults" class="results-grid"></div>
+    </section>
+</main>
+
+<script src="../js/customerSearch.js"></script>
+</body>
+</html>
